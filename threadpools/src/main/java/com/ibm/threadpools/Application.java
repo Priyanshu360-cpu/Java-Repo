@@ -37,9 +37,10 @@ public class Application
 		int vCPU = Runtime.getRuntime().availableProcessors();
 		ScheduledExecutorService service1=Executors.newScheduledThreadPool(vCPU);
 		System.out.println("Started Sechduling taks at "+new Date());
-		for(int counter=1;counter<=10;counter++) {
 //			service1.schedule(new Test(counter),10,TimeUnit.SECONDS);
-			service1.scheduleAtFixedRate(new Test(counter), 10, 5, TimeUnit.SECONDS);
-		}
+//		service1.scheduleAtFixedRate(new Test(1), 10, 5, TimeUnit.SECONDS);
+
+			service1.scheduleWithFixedDelay(new Test(2), 10, 5, TimeUnit.SECONDS);
+		
 	}
 }
