@@ -2,6 +2,8 @@ package com.ibm.threadpools;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 class Test implements Runnable{
 	int count;
@@ -24,5 +26,11 @@ public class Application
 			service.submit(new Test(counter));
 		}
 		service.shutdown();
+		int vCPU = Runtime.getRuntime().availableProcessors();
+		ScheduledExecutorService service1=Executors.newScheduledThreadPool(vCPU);
+		for(int counter=1;counter<=10;counter++) {
+			service1.schedule(new Test(counter),10,TimeUnit.SECONDS);
+		}
+		service1.shutdown();
 	}
 }
