@@ -41,6 +41,15 @@ public class Application
 //		service1.scheduleAtFixedRate(new Test(1), 10, 5, TimeUnit.SECONDS);
 
 			service1.scheduleWithFixedDelay(new Test(2), 10, 5, TimeUnit.SECONDS);
-		
+		ExecutorService service3 = Executors.newCachedThreadPool();
+		for(int counter=1;counter<=10;counter++) {
+			service3.submit(new Test(counter));
+			try {
+				Thread.sleep(1000);
+				
+			}catch(Exception e) {
+				System.out.println(e);
+			}
+		}
 	}
 }
