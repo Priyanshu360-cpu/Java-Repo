@@ -29,6 +29,13 @@ public class Application
 {
 	public static void main( String[] args )
 	{
+		Thread thread1=new Thread( new Runnable() {
+			@Override
+			public void run() {
+				System.out.println(Thread.currentThread());
+			}
+		});
+		thread1.start();
 		ExecutorService service=Executors.newFixedThreadPool(10);
 		for(int counter =1;counter<=10;counter++) {
 			service.submit(new Test(counter));
