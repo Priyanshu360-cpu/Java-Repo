@@ -19,7 +19,7 @@ public class Application
 {
 	public static void main( String[] args )
 	{
-		ExecutorService service=Executors.newFixedThreadPool(1000000000);
+		ExecutorService service=Executors.newFixedThreadPool(10);
 		for(int counter =1;counter<=10;counter++) {
 			service.submit(new Test(counter));
 		}
