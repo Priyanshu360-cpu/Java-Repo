@@ -8,10 +8,10 @@
    http://www.springframework.org/schema/context
    http://www.springframework.org/schema/context/spring-context.xsd">
    
-   <bean id="spellChecker1" class="com.ibm.spring.beans.SpellChecker" scope="prototype">
+   <bean id="spellChecker1" class="com.ibm.spring.beans.SpellChecker" scope="singleton">
    <property name="id" value="1"/>
    </bean>
-   <bean id="textEditor" class="com.ibm.spring.beans.TextEditor">
+   <bean id="textEditor" class="com.ibm.spring.beans.TextEditor" autowire="constructor" init-method="init" destroy-method="destroy">
 <!--    <property name="spellChecker" ref="spellChecker1"/> -->
 <constructor-arg ref="spellChecker1"/>
    </bean>

@@ -12,7 +12,12 @@ public class TextEditor {
  public void setSpellChecker(SpellChecker spellChecker) {
 	 this.spellChecker=spellChecker;
  }
-
+public void init() {
+	System.out.println("TextEditor Initialized");
+}
+public void destroy() {
+	System.out.println("Text Editor Destoyed");
+}
  public void spellCheck() {
 	 spellChecker.checkSpelling();
  }

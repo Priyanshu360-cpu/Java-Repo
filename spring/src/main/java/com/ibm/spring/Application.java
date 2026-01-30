@@ -17,6 +17,7 @@ public class Application
 		SpellChecker spellChecker2 = (SpellChecker) context.getBean("spellChecker1");
 		SpellChecker spellChecker3 = (SpellChecker) context.getBean("spellChecker1");
 
-
+		ClassPathXmlApplicationContext cpxaContext = (ClassPathXmlApplicationContext)context;
+		cpxaContext.registerShutdownHook();
 	}
 }
