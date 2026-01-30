@@ -11,8 +11,12 @@ public class Application
 	public static void main( String[] args )
 	{
 		ApplicationContext context=new ClassPathXmlApplicationContext("spring.xml");
-		SpellChecker spellChecker = (SpellChecker) context.getBean("spellChecker1");
+		SpellChecker spellChecker1 = (SpellChecker) context.getBean("spellChecker1");
         TextEditor textEditor = (TextEditor) context.getBean("textEditor");
         textEditor.spellCheck();
+		SpellChecker spellChecker2 = (SpellChecker) context.getBean("spellChecker1");
+		SpellChecker spellChecker3 = (SpellChecker) context.getBean("spellChecker1");
+
+
 	}
 }
