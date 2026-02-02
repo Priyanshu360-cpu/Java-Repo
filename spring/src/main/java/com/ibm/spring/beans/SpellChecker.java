@@ -1,5 +1,8 @@
 package com.ibm.spring.beans;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class SpellChecker {
 
 	private int id;

@@ -7,12 +7,59 @@
    http://www.springframework.org/schema/beans/spring-beans.xsd
    http://www.springframework.org/schema/context
    http://www.springframework.org/schema/context/spring-context.xsd">
-   
-   <bean id="spellChecker1" class="com.ibm.spring.beans.SpellChecker" scope="singleton">
-   <property name="id" value="1"/>
-   </bean>
-   <bean id="textEditor" class="com.ibm.spring.beans.TextEditor" autowire="constructor" init-method="init" destroy-method="destroy">
-<!--    <property name="spellChecker" ref="spellChecker1"/> -->
-<constructor-arg ref="spellChecker1"/>
-   </bean>
-   </beans>
+	<context:annotation-config />
+	<context:component-scan
+		base-package="com.ibm.spring.beans,
+		com.ibm.spring.services" />
+
+	<bean id="javaCollection"
+		class="com.ibm.spring.beans.JavaCollection">
+		<property name="addressList">
+			<list>
+				<value>INDIA</value>
+				<value>China</value>
+				<value>USA</value>
+				<value>USA</value>
+			</list>
+		</property>
+		<property name="addressSet">
+			<set>
+				<value>INDIA</value>
+				<value>China</value>
+				<value>USA</value>
+				<value>USA</value>
+			</set>
+		</property>
+		<property name="addressMap">
+			<map>
+				<entry key="1" value="INDIA" />
+				<entry key="2" value="China" />
+				<entry key="3" value="USA" />
+				<entry key="4" value="USA" />
+			</map>
+
+		</property>
+		<property name="addressProp">
+			<props>
+				<prop key="one">INDIA</prop>
+				<prop key="two">China</prop>
+				<prop key="three">USA</prop>
+				<prop key="four">USA</prop>
+
+
+			</props>
+		</property>
+	</bean>
+	<!-- <bean id="spellChecker1" class="com.ibm.spring.beans.SpellChecker" 
+		scope="singleton"> -->
+	<!-- <property name="id" value="1"/> -->
+	<!-- </bean> -->
+	<!-- <bean id="spellChecker2" class="com.ibm.spring.beans.SpellChecker" 
+		scope="singleton"> -->
+	<!-- <property name="id" value="1"/> -->
+	<!-- </bean> -->
+	<!-- <bean id="textEditor" class="com.ibm.spring.beans.TextEditor" autowire="byType" 
+		init-method="init" destroy-method="destroy" lazy-init="true"> -->
+	<!-- <property name="spellChecker" ref="spellChecker1"/> -->
+	<!-- <constructor-arg ref="spellChecker1"/> </bean> -->
+</beans>
