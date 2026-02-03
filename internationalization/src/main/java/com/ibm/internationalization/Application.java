@@ -40,6 +40,8 @@ public class Application
 	private static void printAnnotation(String element, CustomAnnotation ann) {
 		System.out.println("Element:" + element);
 		System.out.println("Name:" + ann.name());
+		System.out.println("Duration: " + ann.duration());
+		
 
 	}
 	private static void printMessages(ResourceBundle bundle) {
