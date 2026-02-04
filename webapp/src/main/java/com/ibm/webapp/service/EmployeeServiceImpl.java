@@ -3,6 +3,7 @@ package com.ibm.webapp.service;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+import com.ibm.webapp.mapper.EmployeeMapper;
 import com.ibm.webapp.model.Employee;
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
@@ -32,6 +33,25 @@ public class EmployeeServiceImpl implements EmployeeService {
 		System.out.println("Employee Deleted");
 		return a;
 		
+	}
+
+	@Override
+	public boolean employeeExists(String email) {
+		Integer count = jdbcTemplate.queryForObject(
+		        "SELECT COUNT(*) FROM employee WHERE email = ?",
+		        Integer.class,
+		        email
+		);
+
+		if (count != null && count > 0) {
+		   return true;
+		} else {
+			return false;
+		}	}
+
+	@Override
+	public Employee findEmployee(String email) {
+return jdbcTemplate.queryForObject("SELECT * FROM employee where email=?", new EmployeeMapper(),email);
 	}
 
 }

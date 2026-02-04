@@ -25,7 +25,21 @@ private EmployeeService employeeService;
         model.addAttribute("employee", new Employee());
         return "employee-form";
     }
-
+@PostMapping("/login")
+public String Login(
+        @Valid @ModelAttribute("employee") Employee employee,BindingResult result,Model model) {
+	AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(com.ibm.webapp.config.DatabaseConfig.class);
+if(employeeService.employeeExists(employee.getEmail())) {
+    model.addAttribute("employee", employeeService.findEmployee(employee.getEmail()));
+    
+	return "save-form";}
+else {
+	result.rejectValue(
+            "email",
+            "error.employee",
+            "No User with this email exists");
+	return "employee-form";} 
+}
     @PostMapping("/save")
     public String saveForm(
             @Valid @ModelAttribute("employee") Employee employee,
