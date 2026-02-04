@@ -16,7 +16,7 @@ public class Application
 		EmployeeJDBCTemplate employeeJDBCTemplate=(EmployeeJDBCTemplate) context.getBean("employeeJDBCTemplateBean");
 		System.out.println("Records Creation");
 		employeeJDBCTemplate.update(1, "Smitha", "Raj", 10000);
-	    employeeJDBCTemplate.delete(2);
+	    //employeeJDBCTemplate.delete(2);
 //		employeeJDBCTemplate.create("Allen", "Peter", 18000);
 		
 		System.out.println("Listing Muliple Records");
