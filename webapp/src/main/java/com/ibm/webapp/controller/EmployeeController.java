@@ -35,7 +35,47 @@ private EmployeeService employeeService;
             return "employee-form"; // validation errors shown here
         }
 		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(com.ibm.webapp.config.DatabaseConfig.class);
+		try {
 		employeeService.insertEmployee(employee);
+		}catch(org.springframework.dao.DuplicateKeyException e) {
+			result.rejectValue(
+	                "email",
+	                "error.employee",
+	                "Email already exists");
+	        return "employee-form";
+
+		}
         return "save-form";
     }
+    
+    @PostMapping("/delete")
+    public String deleteForm(
+            @ModelAttribute("employee") Employee employee,
+            BindingResult result) {
+		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(com.ibm.webapp.config.DatabaseConfig.class);
+
+        try {
+            int rows = employeeService.deleteEmployee(employee.getEmail());
+
+            if (rows == 0) {
+                // no record deleted → email not found
+                result.rejectValue(
+                        "email",
+                        "error.delete",
+                        "Employee does not exist");
+                return "save-form";
+            }
+
+        } catch (Exception e) {
+        	e.printStackTrace()
+;            result.rejectValue(
+                    "email",
+                    "error.delete",
+                    "Unable to delete employee");
+            return "save-form";
+        }
+
+        return "employee-form"; // back to main form after successful delete
+    }
+
 }

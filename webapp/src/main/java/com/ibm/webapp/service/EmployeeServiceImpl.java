@@ -19,4 +19,19 @@ public class EmployeeServiceImpl implements EmployeeService {
 		System.out.println("Employee inserted to database");
 	}
 
+	@Override
+	public void updateEmployee(String email, String phone) {
+		jdbcTemplate.update("UPDATE employee SET phone=? where email=?",email,phone);
+		System.out.println("Employee's Phone Number Updated");
+
+	}
+
+	@Override
+	public int deleteEmployee(String email) {
+		int a=jdbcTemplate.update("DELETE FROM employee where email=?",email);
+		System.out.println("Employee Deleted");
+		return a;
+		
+	}
+
 }
