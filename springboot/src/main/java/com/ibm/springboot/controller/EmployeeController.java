@@ -43,8 +43,7 @@ public class EmployeeController {
 	}
 	@PostMapping("/findBy")
 	public Optional<Employee> findByEmployee(@RequestBody Employee employee) {
-	     return employeeService.getByFirstNameAndEmail(employee.getFirstName(),employee.getLastName());
-	      
+	     return employeeService.getByFirstNameAndEmail(employee.getFirstName(),employee.getEmail());
 	}
 	@PutMapping("/update/{id}")
 	public ResponseEntity<Employee> updateEmployee(
