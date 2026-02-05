@@ -16,9 +16,9 @@ public class DatabaseConfig {
 	@Bean
 	public DataSource dataSource() {
 		HikariDataSource ds = new HikariDataSource();
-		ds.setJdbcUrl("jdbc:mysql://localhost:3306/payroll");
-		ds.setUsername("priyanshu");
-		ds.setPassword("pass123");
+		ds.setJdbcUrl("jdbc:mysql://sql12.freesqldatabase.com:3306/sql12816200");
+		ds.setUsername("sql12816200");
+		ds.setPassword("M3mmwkInkh");
 		ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
 		return ds;
 	}
