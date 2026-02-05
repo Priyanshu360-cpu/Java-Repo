@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class LoggingAspect {
 	
-	@Pointcut("execution(public * com.ibm.springboot2.*.*(..))")
+	@Pointcut("execution(public * com.ibm.springboot2.service.*.*(..))")
 	public void allServiceMethods() {}
 	
 	@Before("allServiceMethods()")
