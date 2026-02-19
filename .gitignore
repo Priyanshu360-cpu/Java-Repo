@@ -3,7 +3,7 @@
 .settings/
 .project
 .classpath
-
+casestudy/
 # Maven
 target/
 
